@@ -14,11 +14,8 @@ void setup()
 
 void loop()
 {
-  // If the button is pressed, then turn on our LED
-  if (digitalRead(BUTTON_PIN) == HIGH) {
-    digitalWrite(LED_PIN, HIGH);
-  // Otherwise, turn it off
-  } else {
-    digitalWrite(LED_PIN, LOW);
-  }
+  // Output button press value as LED value
+  // Example: BUTTON_VAL = HIGH
+  int BUTTON_VAL = digitalRead(BUTTON_PIN);
+  digitalWrite(LED_PIN, BUTTON_VAL);
 }
