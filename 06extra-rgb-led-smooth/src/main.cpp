@@ -20,7 +20,7 @@ color_t COLOR_ARRAY[] = {
 };
 int COLOR_ARRAY_LENGTH = sizeof(COLOR_ARRAY)/sizeof(*COLOR_ARRAY);
 int STEP_COLOR_DISTANCE = 10; // Only move by 10 pixels at a time (e.g. 245 -> 255)
-int STEP_DURATION = 3000; // ms
+int STEP_DURATION = 20; // ms
 
 // Define our helpers
 void colorWrite(color_t color) {
@@ -53,19 +53,19 @@ void loop()
 
   // Move closer to our target colors
   if (current_color.red < target_color.red) {
-    current_color.red = std::min(current_color.red + STEP_COLOR_DISTANCE, target_color.red);
+    current_color.red = min(current_color.red + STEP_COLOR_DISTANCE, target_color.red);
   } else if (current_color.red > target_color.red) {
-    current_color.red = std::max(current_color.red - STEP_COLOR_DISTANCE, target_color.red);
+    current_color.red = max(current_color.red - STEP_COLOR_DISTANCE, target_color.red);
   }
   if (current_color.green < target_color.green) {
-    current_color.green = std::min(current_color.green + STEP_COLOR_DISTANCE, target_color.green);
+    current_color.green = min(current_color.green + STEP_COLOR_DISTANCE, target_color.green);
   } else if (current_color.green > target_color.green) {
-    current_color.green = std::max(current_color.green - STEP_COLOR_DISTANCE, target_color.green);
+    current_color.green = max(current_color.green - STEP_COLOR_DISTANCE, target_color.green);
   }
   if (current_color.blue < target_color.blue) {
-    current_color.blue = std::min(current_color.blue + STEP_COLOR_DISTANCE, target_color.blue);
+    current_color.blue = min(current_color.blue + STEP_COLOR_DISTANCE, target_color.blue);
   } else if (current_color.blue > target_color.blue) {
-    current_color.blue = std::max(current_color.blue - STEP_COLOR_DISTANCE, target_color.blue);
+    current_color.blue = max(current_color.blue - STEP_COLOR_DISTANCE, target_color.blue);
   }
 
   // Output our updated color and wait
