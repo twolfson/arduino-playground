@@ -15,6 +15,11 @@ Projects are arranged by folders, initial top level items are from [PlatformIO][
 - ##-{{title}} - Lesson from [SunFounder][]
 - ##extra-{{title}} - Tangent based on [SunFounder][] lesson
 
+### Finding appropriate part
+Most parts are relatively obvious (e.g. LED, potentiometer) but some are hard to identify. Here are some tips:
+
+- To identify a resistor, use a multimeter as demonstrated by SparkFun: https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter
+
 ### Uploading a project
 As mentioned, all folders are using [PlatformIO][] to make iterating a breeze. To upload a specific folder:
 
