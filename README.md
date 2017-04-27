@@ -36,6 +36,7 @@ platformio run --upload target
 
 ## Concepts to implement/explore
 - [ ] Using PlatformIO CI setup
+- [ ] Using Arduino serial debugger (a la https://www.arduino.cc/en/Tutorial/ColorCrossfader)
 - [ ] Implement RS-232
 - [ ] Implement other buses
 
