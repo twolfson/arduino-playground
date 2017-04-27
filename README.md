@@ -16,6 +16,7 @@ Projects are arranged by folders, initial top level items are from [PlatformIO][
 - lesson-02 - "Controlling LED by button"
 - lesson-02-hold-state - Swap LED state based on button press
 - lesson-03 - "Controlling LED by PWM"
+- lesson-04 - "Controlling LED by potentiometer"
 
 ### Uploading a project
 As mentioned, all folders are using [PlatformIO][] to make iterating a breeze. To upload a specific folder:
