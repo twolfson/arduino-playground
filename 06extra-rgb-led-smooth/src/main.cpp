@@ -10,15 +10,13 @@ struct color_t {
 
 // Define our constants
 // DEV: We use pins 9-11 as they're all PWM
-// DEV: We are using struct initialization for COLOR_ARRAY
-//   http://en.cppreference.com/w/c/language/struct_initialization
 int RED_PIN = 9;
 int GREEN_PIN = 10;
 int BLUE_PIN = 11;
 color_t COLOR_ARRAY[] = {
-  {.red = 100, .green =   0, .blue =   0}, // Red
-  {.red =   0, .green = 100, .blue =   0}, // Green
-  {.red =   0, .green =   0, .blue = 100}, // Blue
+  {red: 100, green: 0, blue: 0}, // Red
+  {red: 0, green: 100, blue: 0}, // Green
+  {red: 0, green: 0, blue: 100}, // Blue
 };
 int COLOR_ARRAY_LENGTH = sizeof(COLOR_ARRAY)/sizeof(*COLOR_ARRAY);
 int STEP_COLOR_DISTANCE = 10; // Only move by 10 pixels at a time (e.g. 245 -> 255)
@@ -34,7 +32,7 @@ void colorWrite(color_t color) {
 
 // Define our main logic
 int target_index = 0;
-color_t current_color {.red = 0, .green = 0, .blue = 0};
+color_t current_color {red: 0, green: 0, blue: 0};
 void setup()
 {
   // Configure our pins
