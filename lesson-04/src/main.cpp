@@ -6,6 +6,10 @@
 // DEV: POT is short for potentiometer (I believe it's jargon)
 int LED_PIN = 9; // PWM
 int POT_PIN = A0;
+int POT_MIN = 0;
+int POT_MAX = 1023;
+int PWM_MIN = 0;
+int PWM_MAX = 255;
 
 void setup()
 {
@@ -16,9 +20,10 @@ void setup()
 
 void loop()
 {
-  // TODO: Read from our potentiometer
+  // Read from our potentiometer
+  int inputVal = analogRead(POT_PIN);
 
   // Convert our potentiometer value and output it
-  analogWrite(LED_PIN, 255);
-  delay(9999);
+  int outputVal = map(inputVal, POT_MIN, POT_MAX, PWM_MIN, PWM_MAX);
+  analogWrite(LED_PIN, outputVal);
 }
