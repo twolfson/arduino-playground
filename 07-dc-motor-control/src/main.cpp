@@ -6,9 +6,9 @@ int MOTOR_IN_1_PIN = 9;
 int MOTOR_IN_2_PIN = 10;
 
 // Define our helpers
-void motorWrite(unsigned int speed, bool counterClockwise = false) {
+void motorWrite(int speed, bool counterClockwise = false) {
   // If we are turning clockwise
-  if (counterClockwise === false) {
+  if (counterClockwise == false) {
     // Enable our clockwise input and disable counter-clockwise input
     analogWrite(MOTOR_IN_1_PIN, speed);
     analogWrite(MOTOR_IN_2_PIN, 0);
@@ -31,10 +31,8 @@ void setup()
 void loop()
 {
   // Start turning our motor clockwise
-  motorWrite(200, false);
-  delay(1000);
-
-  // Then, turn our motor counter-clockwise
-  motorWrite(200, true);
+  // motorWrite(200, false);
+  analogWrite(MOTOR_IN_1_PIN, 200);
+  analogWrite(MOTOR_IN_2_PIN, 0);
   delay(1000);
 }
