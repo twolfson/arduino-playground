@@ -19,6 +19,15 @@ void loop()
   // Fade in our LED in stepped intervals
   int i;
   for (i = 0; i <= 255; i += 1) {
+    // DEV: analogWrite outputs full voltage for i/256 of PWM frequency
+    //   Based on docs, this is 490Hz for most Arduino pins
+    //     except Uno has 5/6 with 980Hz and Leonardo has 3/11 with 980Hz
+    //     This means we can get finer control on the 980Hz pins
+    //   https://www.arduino.cc/en/Reference/analogWrite
+    //   https://www.arduino.cc/en/Tutorial/PWM
+    // DEV: PWM operates based on persistence of vision
+    //   so we see a light on at full voltage for i/256 * 1/490s = i/(256*490)s
+    //   but we think it's set to a low voltage for the whole time
     analogWrite(LED_PIN, i);
     delay(STEP_DURATION);
   }
