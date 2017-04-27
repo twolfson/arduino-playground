@@ -13,16 +13,14 @@ struct color_t {
 int RED_PIN = 9;
 int GREEN_PIN = 10;
 int BLUE_PIN = 11;
-color_t COLOR_RED = {red: 100, green: 0, blue: 0};
-color_t COLOR_GREEN = {red: 0, green: 100, blue: 0};
-color_t COLOR_BLUE = {red: 0, green: 0, blue: 100};
 color_t COLOR_ARRAY[3] = {
-  COLOR_RED, COLOR_GREEN, COLOR_BLUE
+  {red: 100, green: 0, blue: 0}, // red
+  {red: 0, green: 100, blue: 0}, // green
+  {red: 0, green: 0, blue: 100}, // blue
 };
 int STEP_DURATION = 3000; // ms
 
 // Define our helpers
-// TODO: Is `char` the proper data-type? Does C++ have something like `byte` or `uint4`?
 void colorWrite(color_t color) {
   // Output our individual colors directly to their pins
   analogWrite(RED_PIN, color.red);
