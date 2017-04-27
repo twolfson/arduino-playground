@@ -15,14 +15,14 @@ void setup()
 
 void loop()
 {
-  // Fade up our LED in stepped intervals
+  // Fade in our LED in stepped intervals
   int i;
   for (i = 0; i <= 255; i += 1) {
     analogWrite(LED_PIN, i);
     delay(STEP_DURATION);
   }
 
-  // Fade down our LED in stepped intervals
+  // Fade out our LED in stepped intervals
   for (i = 255; i >= 0; i -= 1) {
     analogWrite(LED_PIN, i);
     delay(STEP_DURATION);
