@@ -12,8 +12,9 @@ Based off of [sunfounder/Sunfounder_SuperKit_for_Arduino][] but ported to C++ an
 ## Documentation
 Projects are arranged by folders, initial top level items are from [PlatformIO][]
 
-- lesson-## - Lesson from SunFounder, ported to C++
-- lesson-##-{{modifier}} - Personal tangent from a given lesson
+- lesson-01 - "Blinking LED"
+- lesson-02 - "Controlled LED by button"
+- lesson-02-hold-state - Swap LED state based on button press
 
 ### Uploading a project
 As mentioned, all folders are using [PlatformIO][] to make iterating a breeze. To upload a specific folder:
