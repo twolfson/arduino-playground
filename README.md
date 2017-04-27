@@ -12,6 +12,10 @@ Projects are arranged by folders, initial top level items are from PlatformIO
 - lesson-## - Lesson from SunFounder, ported to C++
 - lesson-##-{{modifier}} - Personal tangent from a given lesson
 
+## Concepts to implement/explore
+- [ ] Implement RS-232
+- [ ] Implement other buses
+
 ## Relevant links
 - [twolfson/shenzhen-io-solutions](https://github.com/twolfson/shenzhen-io-solutions)
     - Solutions from Shenzhen I/O which helped push me further along in my electronics understanding
