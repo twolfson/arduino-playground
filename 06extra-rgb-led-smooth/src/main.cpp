@@ -13,15 +13,13 @@ struct color_t {
 int RED_PIN = 9;
 int GREEN_PIN = 10;
 int BLUE_PIN = 11;
-color_t COLOR_RED;
-color_t COLOR_GREEN;
-color_t COLOR_BLUE;
-// color_t COLOR_ARRAY[3] = {
-//   color {red: 255, green: 0, blue: 0},
-//   {red: 0, green: 255, blue: 0},
-//   {red: 0, green: 0, blue: 255},
-// ];
-int STEP_DURATION = 10; // ms
+color_t COLOR_RED = {red: 100, green: 0, blue: 0};
+color_t COLOR_GREEN = {red: 0, green: 100, blue: 0};
+color_t COLOR_BLUE = {red: 0, green: 0, blue: 100};
+color_t COLOR_ARRAY[3] = {
+  COLOR_RED, COLOR_GREEN, COLOR_BLUE
+};
+int STEP_DURATION = 3000; // ms
 
 // Define our helpers
 // TODO: Is `char` the proper data-type? Does C++ have something like `byte` or `uint4`?
@@ -47,6 +45,10 @@ void setup()
 void loop()
 {
   // Output basic colors
-  colorWrite(COLOR_RED); // #FF0000 (red only)
+  colorWrite(COLOR_ARRAY[0]);
+  delay(STEP_DURATION);
+  colorWrite(COLOR_ARRAY[1]);
+  delay(STEP_DURATION);
+  colorWrite(COLOR_ARRAY[2]);
   delay(STEP_DURATION);
 }
