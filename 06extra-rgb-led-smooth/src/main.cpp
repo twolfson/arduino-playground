@@ -10,6 +10,8 @@ struct color_t {
 
 // Define our constants
 // DEV: We use pins 9-11 as they're all PWM
+// DEV: We use JS-similar syntax for structs (not sure how wide-spread support is)
+//   http://stackoverflow.com/a/19691081
 int RED_PIN = 9;
 int GREEN_PIN = 10;
 int BLUE_PIN = 11;
