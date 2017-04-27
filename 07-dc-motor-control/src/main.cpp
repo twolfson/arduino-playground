@@ -1,6 +1,9 @@
 // Load in our dependencies
 #include "Arduino.h"
 
+// DEV: DC motor might need a little starter spin before it moves on its own
+//   we found this out the hard way due to verifying voltage with our multimeter but no spinning
+
 // Define our constants
 int MOTOR_IN_1_PIN = 9;
 int MOTOR_IN_2_PIN = 10;
@@ -31,8 +34,10 @@ void setup()
 void loop()
 {
   // Start turning our motor clockwise
-  // motorWrite(200, false);
-  analogWrite(MOTOR_IN_1_PIN, 200);
-  analogWrite(MOTOR_IN_2_PIN, 0);
-  delay(1000);
+  motorWrite(200, false);
+  delay(500);
+
+  // Then, turn our motor counter-clockwise
+  motorWrite(200, true);
+  delay(500);
 }
