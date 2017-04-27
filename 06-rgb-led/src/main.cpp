@@ -9,7 +9,8 @@ int BLUE_PIN = 11;
 int STEP_DURATION = 250; // ms
 
 // Define our helpers
-// TODO: Is `char` the proper data-type? Does C++ have something like `byte` or `uint4`?
+// DEV: We use `char` as it fits our size perfectly
+//   http://en.cppreference.com/w/cpp/language/types
 void colorWrite(unsigned char red, unsigned char green, unsigned char blue) {
   // Output our individual colors directly to their pins
   analogWrite(RED_PIN, red);
