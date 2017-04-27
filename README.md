@@ -32,6 +32,7 @@ platformio run --upload target
 ```
 
 ## Concepts to implement/explore
+- [ ] Using PlatformIO CI setup
 - [ ] Implement RS-232
 - [ ] Implement other buses
 
