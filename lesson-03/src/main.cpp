@@ -3,6 +3,7 @@
 #include "Arduino.h"
 
 // Define our constants
+// DEV: LED_PIN must support PWM (i.e. 3, 5, 6, 9, 10, 11)
 int LED_PIN = 9;
 int STEP_DURATION = 8; // ms
 int LOOP_DELAY = 800; // ms
