@@ -29,12 +29,12 @@ void loop()
 {
   // Draw a "1"
   digitalWrite(A_PIN, LOW);
-  digitalWrite(B_PIN, LOW);
-  digitalWrite(C_PIN, LOW);
+  digitalWrite(B_PIN, HIGH);
+  digitalWrite(C_PIN, HIGH);
   digitalWrite(D_PIN, LOW);
   digitalWrite(E_PIN, LOW);
   digitalWrite(F_PIN, LOW);
-  digitalWrite(G_PIN, HIGH);
+  digitalWrite(G_PIN, LOW);
   digitalWrite(DECIMAL_PIN, LOW);
   delay(1000);
 }
