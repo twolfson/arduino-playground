@@ -2,6 +2,10 @@
 #include "Arduino.h"
 #include "LiquidCrystal.h"
 
+// DEV: We are unable to verify this works yet
+//   all the wires look correct
+//   but we are guessing there's an issue due to unsoldered LCD connections
+
 // Define our constants
 int LCD_COLUMNS = 16;
 int LCD_ROWS = 2;
