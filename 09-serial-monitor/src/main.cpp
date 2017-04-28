@@ -5,7 +5,7 @@
 
 // Define our constants
 int SERIAL_DATA_RATE = 9600; // bps
-String PROMPT = "Turn LED ON (1) or OFF (0)?:";
+String PROMPT = "Type into the serial monitor";
 
 // Define our main logic
 void setup()
