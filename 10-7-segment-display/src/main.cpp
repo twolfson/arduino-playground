@@ -11,6 +11,37 @@ int F_PIN = 10;
 int G_PIN = 9;
 int DECIMAL_PIN = 8;
 
+char ONE_DRAWING[5][4] = {
+  "   ",
+  "  |",
+  "   ",
+  "  |",
+  "   ",
+};
+char TWO_DRAWING[5][4] = {
+  " - ",
+  "  |",
+  " - ",
+  "|  ",
+  " - ",
+};
+char TWO_DECIMAL_DRAWING[5][4] = {
+  " - ",
+  "  |",
+  " - ",
+  "|  ",
+  " -.",
+};
+char EIGHT_DECIMAL_DRAWING[5][4] = {
+  " - ",
+  "| |",
+  " - ",
+  "| |",
+  " -.",
+};
+
+// Define helper logic
+
 // Define our main logic
 void setup()
 {
