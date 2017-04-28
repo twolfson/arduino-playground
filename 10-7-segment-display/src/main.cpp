@@ -11,9 +11,9 @@ int F_PIN = 10;
 int G_PIN = 9;
 int DECIMAL_PIN = 8;
 
-char HORIZ_CHAR = "-"[0];
-char VERT_CHAR = "|"[0];
-char DECIMAL_CHAR = "."[0];
+char HORIZ_CHAR = '-';
+char VERT_CHAR = '|';
+char DECIMAL_CHAR = '.';
 char ONE_DRAWING[5][4] = {
   "   ",
   "  |",
