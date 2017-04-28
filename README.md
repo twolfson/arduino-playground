@@ -34,6 +34,15 @@ cd lesson-01
 platformio run --upload target
 ```
 
+### Interacting with serial monitor
+[PlatformIO][] can attach to the serial monitor via:
+
+```bash
+platformio device monitor
+```
+
+Unfortunately, when the monitor is active, we can't upload new firmware so be sure to only have 1 running at a time
+
 ## Concepts to implement/explore
 - [ ] Using PlatformIO CI setup
 - [ ] Using Arduino serial debugger (a la https://www.arduino.cc/en/Tutorial/ColorCrossfader)
