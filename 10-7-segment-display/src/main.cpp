@@ -42,6 +42,50 @@ char EIGHT_DECIMAL_DRAWING[5][4] = {
   "| |",
   " -.",
 };
+char LOOP_SEQUENCE_DRAWINGS[6][5][4] = {
+  {
+    " - ",
+    "   ",
+    "   ",
+    "   ",
+    "   ",
+  },
+  {
+    "   ",
+    "  |",
+    "   ",
+    "   ",
+    "   ",
+  },
+  {
+    "   ",
+    "   ",
+    "   ",
+    "  |",
+    "   ",
+  },
+  {
+    "   ",
+    "   ",
+    "   ",
+    "   ",
+    " - ",
+  },
+  {
+    "   ",
+    "   ",
+    "   ",
+    "|  ",
+    "   ",
+  },
+  {
+    "   ",
+    "|  ",
+    "   ",
+    "   ",
+    "   ",
+  },
+};
 
 // Define helper logic
 void drawingWrite(char drawing[5][4]) {
@@ -78,4 +122,14 @@ void loop()
   delay(1000);
   drawingWrite(EIGHT_DECIMAL_DRAWING);
   delay(1000);
+
+  // Draw a looping sequence
+  int loop_count = 3;
+  int len = sizeof(LOOP_SEQUENCE_DRAWINGS)/sizeof(*LOOP_SEQUENCE_DRAWINGS);
+  for (int i = 0; i < loop_count; i += 1) {
+    for (int j = 0; j < len; j += 1) {
+      drawingWrite(LOOP_SEQUENCE_DRAWINGS[j]);
+      delay(100);
+    }
+  }
 }
