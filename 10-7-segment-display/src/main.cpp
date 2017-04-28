@@ -11,6 +11,9 @@ int F_PIN = 10;
 int G_PIN = 9;
 int DECIMAL_PIN = 8;
 
+char HORIZ_CHAR = "-";
+char VERT_CHAR = "|";
+char DECIMAL_CHAR = ".";
 char ONE_DRAWING[5][4] = {
   "   ",
   "  |",
@@ -41,6 +44,16 @@ char EIGHT_DECIMAL_DRAWING[5][4] = {
 };
 
 // Define helper logic
+void drawingWrite(char drawing[5][4]) {
+  digitalWrite(A_PIN, drawing[0][1] == HORIZ_CHAR ? HIGH : LOW);
+  digitalWrite(B_PIN, drawing[1][0] == VERT_CHAR ? HIGH : LOW);
+  digitalWrite(C_PIN, drawing[1][2] == VERT_CHAR ? HIGH : LOW);
+  digitalWrite(D_PIN, drawing[2][1] == HORIZ_CHAR ? HIGH : LOW);
+  digitalWrite(E_PIN, drawing[3][0] == VERT_CHAR ? HIGH : LOW);
+  digitalWrite(F_PIN, drawing[3][2] == VERT_CHAR ? HIGH : LOW);
+  digitalWrite(G_PIN, drawing[4][1] == HORIZ_CHAR ? HIGH : LOW);
+  digitalWrite(DECIMAL_PIN, drawing[4][2] == DECIMAL_CHAR ? HIGH : LOW);
+}
 
 // Define our main logic
 void setup()
@@ -59,13 +72,6 @@ void setup()
 void loop()
 {
   // Draw a "1"
-  digitalWrite(A_PIN, LOW);
-  digitalWrite(B_PIN, HIGH);
-  digitalWrite(C_PIN, HIGH);
-  digitalWrite(D_PIN, LOW);
-  digitalWrite(E_PIN, LOW);
-  digitalWrite(F_PIN, LOW);
-  digitalWrite(G_PIN, LOW);
-  digitalWrite(DECIMAL_PIN, LOW);
+  drawingWrite(ONE_DRAWING);
   delay(1000);
 }
