@@ -5,33 +5,30 @@
 
 // Define our constants
 int SERIAL_DATA_RATE = 9600; // bps
-
-// Define our LCD singleton
-LiquidCrystal lcd(
-  4, // RS pin
-  6, // E pin
-  10, 11, 12, 13 // DB4-7 pins
-);
+String PROMPT = "Turn LED ON (1) or OFF (0)?:";
 
 // Define our main logic
 void setup()
 {
   // Listen t our serial port
   Serial.begin(SERIAL_DATA_RATE);
+
+  // Prompt for initial input
+  Serial.println(PROMPT);
 }
 
 void loop()
 {
+
   // Wait for input data
   if (Serial.available() > 0) {
     // Read in our data
-    string comdata = "";
+    String comdata = "";
     while (Serial.available() > 0) {
       comdata += char(Serial.read());
-      delay(2); // TODO: Why do we need a delay?
     }
 
     // Output our data
-    Serial.println("Received: ", comdata);
+    Serial.println("Received: " + comdata);
   }
 }
