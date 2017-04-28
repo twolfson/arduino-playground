@@ -2,14 +2,14 @@
 #include "Arduino.h"
 
 // Define our constants
-int A_PIN = 12;
-int B_PIN = 11;
-int C_PIN = 10;
-int D_PIN = 9;
-int E_PIN = 8;
-int F_PIN = 7;
-int G_PIN = 6;
-int DECIMAL_PIN = 5;
+int A_PIN = 11;
+int B_PIN = 12;
+int C_PIN = 7;
+int D_PIN = 6;
+int E_PIN = 5;
+int F_PIN = 10;
+int G_PIN = 9;
+int DECIMAL_PIN = 8;
 
 // Define our main logic
 void setup()
@@ -29,12 +29,12 @@ void loop()
 {
   // Draw a "1"
   digitalWrite(A_PIN, LOW);
-  digitalWrite(B_PIN, HIGH);
-  digitalWrite(C_PIN, HIGH);
+  digitalWrite(B_PIN, LOW);
+  digitalWrite(C_PIN, LOW);
   digitalWrite(D_PIN, LOW);
   digitalWrite(E_PIN, LOW);
   digitalWrite(F_PIN, LOW);
-  digitalWrite(G_PIN, LOW);
+  digitalWrite(G_PIN, HIGH);
   digitalWrite(DECIMAL_PIN, LOW);
   delay(1000);
 }
