@@ -6,6 +6,15 @@ const int CLOCK_PIN = 8;
 const int DATA_PIN = 11;
 const int LATCH_PIN = 12;
 
+const int A_VALUE = 0b10000000;
+const int B_VALUE = 0b00000001;
+const int C_VALUE = 0b00001000;
+const int D_VALUE = 0b00000100;
+const int E_VALUE = 0b00000010;
+const int F_VALUE = 0b01000000;
+const int G_VALUE = 0b00100000;
+const int DECIMAL_VALUE = 0b00010000;
+
 char HORIZ_CHAR = '-';
 char VERT_CHAR = '|';
 char DECIMAL_CHAR = '.';
@@ -112,7 +121,7 @@ void loop()
   // DEV: This uses a clock signal to move data along
   // DEV: MSBFIRST means most significant byte first which declares the order of our output
   //   i.e. 01111111 being output as 01111111 or 11111110
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, 252);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, A_VALUE);
 
   // Signal to IC that we are done writing data
   digitalWrite(LATCH_PIN, HIGH);
@@ -120,5 +129,36 @@ void loop()
   // Sleep
   delay(1000);
 
-  // TODO: Update code to use `drawingWrite`
+  digitalWrite(LATCH_PIN, LOW);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, B_VALUE);
+  digitalWrite(LATCH_PIN, HIGH);
+  delay(1000);
+  digitalWrite(LATCH_PIN, LOW);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, C_VALUE);
+  digitalWrite(LATCH_PIN, HIGH);
+  delay(1000);
+  digitalWrite(LATCH_PIN, LOW);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, D_VALUE);
+  digitalWrite(LATCH_PIN, HIGH);
+  delay(1000);
+  digitalWrite(LATCH_PIN, LOW);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, E_VALUE);
+  digitalWrite(LATCH_PIN, HIGH);
+  delay(1000);
+  digitalWrite(LATCH_PIN, LOW);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, F_VALUE);
+  digitalWrite(LATCH_PIN, HIGH);
+  delay(1000);
+  digitalWrite(LATCH_PIN, LOW);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, G_VALUE);
+  digitalWrite(LATCH_PIN, HIGH);
+  delay(1000);
+  digitalWrite(LATCH_PIN, LOW);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, DECIMAL_VALUE);
+  digitalWrite(LATCH_PIN, HIGH);
+  delay(1000);
+  digitalWrite(LATCH_PIN, LOW);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, 0);
+  digitalWrite(LATCH_PIN, HIGH);
+  delay(1000);
 }
