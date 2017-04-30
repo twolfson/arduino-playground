@@ -2,14 +2,9 @@
 #include "Arduino.h"
 
 // Define our constants
-int A_PIN = 11;
-int B_PIN = 12;
-int C_PIN = 7;
-int D_PIN = 6;
-int E_PIN = 5;
-int F_PIN = 10;
-int G_PIN = 9;
-int DECIMAL_PIN = 8;
+const int CLOCK_PIN = 8;
+const int DATA_PIN = 11;
+const int LATCH_PIN = 12;
 
 char HORIZ_CHAR = '-';
 char VERT_CHAR = '|';
@@ -103,33 +98,27 @@ void drawingWrite(char drawing[5][4]) {
 void setup()
 {
   // Configure our pins
-  pinMode(A_PIN, OUTPUT);
-  pinMode(B_PIN, OUTPUT);
-  pinMode(C_PIN, OUTPUT);
-  pinMode(D_PIN, OUTPUT);
-  pinMode(E_PIN, OUTPUT);
-  pinMode(F_PIN, OUTPUT);
-  pinMode(G_PIN, OUTPUT);
-  pinMode(DECIMAL_PIN, OUTPUT);
+  pinMode(CLOCK_PIN, OUTPUT);
+  pinMode(DATA_PIN, OUTPUT);
+  pinMode(LATCH_PIN, OUTPUT);
 }
 
 void loop()
 {
-  // // Draw some numbers
-  // drawingWrite(ONE_DRAWING);
-  // delay(1000);
-  // drawingWrite(TWO_DRAWING);
-  // delay(1000);
-  // drawingWrite(EIGHT_DECIMAL_DRAWING);
-  // delay(1000);
+  // Signal to IC that we are writing data
+  digitalWrite(LATCH_PIN, LOW);
 
-  // // Draw a looping sequence
-  // int loop_count = 3;
-  // int len = sizeof(LOOP_SEQUENCE_DRAWINGS)/sizeof(*LOOP_SEQUENCE_DRAWINGS);
-  // for (int i = 0; i < loop_count; i += 1) {
-  //   for (int j = 0; j < len; j += 1) {
-  //     drawingWrite(LOOP_SEQUENCE_DRAWINGS[j]);
-  //     delay(100);
-  //   }
-  // }
+  // Output our data
+  // DEV: This uses a clock signal to move data along
+  // DEV: MSBFIRST means most significant byte first which declares the order of our output
+  //   i.e. 01111111 being output as 01111111 or 11111110
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, 252);
+
+  // Signal to IC that we are done writing data
+  digitalWrite(LATCH_PIN, HIGH);
+
+  // Sleep
+  delay(1000);
+
+  // TODO: Update code to use `drawingWrite`
 }
