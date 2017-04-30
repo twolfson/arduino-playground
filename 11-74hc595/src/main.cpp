@@ -93,14 +93,32 @@ char LOOP_SEQUENCE_DRAWINGS[6][5][4] = {
 
 // Define helper logic
 void drawingWrite(char drawing[5][4]) {
-  digitalWrite(A_PIN, drawing[0][1] == HORIZ_CHAR ? HIGH : LOW);
-  digitalWrite(F_PIN, drawing[1][0] == VERT_CHAR ? HIGH : LOW);
-  digitalWrite(B_PIN, drawing[1][2] == VERT_CHAR ? HIGH : LOW);
-  digitalWrite(G_PIN, drawing[2][1] == HORIZ_CHAR ? HIGH : LOW);
-  digitalWrite(E_PIN, drawing[3][0] == VERT_CHAR ? HIGH : LOW);
-  digitalWrite(C_PIN, drawing[3][2] == VERT_CHAR ? HIGH : LOW);
-  digitalWrite(D_PIN, drawing[4][1] == HORIZ_CHAR ? HIGH : LOW);
-  digitalWrite(DECIMAL_PIN, drawing[4][2] == DECIMAL_CHAR ? HIGH : LOW);
+  // Calculate our drawing value
+  char drawing_val = 0b00000000;
+
+  // Clockwise outer loop first
+  if (drawing[0][1] == HORIZ_CHAR) { drawing_val |= A_VALUE; }
+  if (drawing[1][2] == VERT_CHAR) { drawing_val |= B_VALUE; }
+  if (drawing[3][2] == VERT_CHAR) { drawing_val |= C_VALUE; }
+  if (drawing[4][1] == HORIZ_CHAR) { drawing_val |= D_VALUE; }
+  if (drawing[3][0] == VERT_CHAR) { drawing_val |= E_VALUE; }
+  if (drawing[1][0] == VERT_CHAR) { drawing_val |= F_VALUE; }
+
+  // Horizontal line and decimal second
+  if (drawing[2][1] == HORIZ_CHAR) { drawing_val |= G_VALUE; }
+  if (drawing[4][2] == DECIMAL_CHAR) { drawing_val |= DECIMAL_VALUE; }
+
+  // Signal to IC that we are writing data
+  digitalWrite(LATCH_PIN, LOW);
+
+  // Output our data
+  // DEV: This uses a clock signal to move data along
+  // DEV: MSBFIRST means most significant byte first which declares the order of our output
+  //   i.e. 01111111 being output as 01111111 or 11111110
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, drawing_val);
+
+  // Signal to IC that we are done writing data
+  digitalWrite(LATCH_PIN, HIGH);
 }
 
 // Define our main logic
@@ -114,51 +132,21 @@ void setup()
 
 void loop()
 {
-  // Signal to IC that we are writing data
-  digitalWrite(LATCH_PIN, LOW);
-
-  // Output our data
-  // DEV: This uses a clock signal to move data along
-  // DEV: MSBFIRST means most significant byte first which declares the order of our output
-  //   i.e. 01111111 being output as 01111111 or 11111110
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, A_VALUE);
-
-  // Signal to IC that we are done writing data
-  digitalWrite(LATCH_PIN, HIGH);
-
-  // Sleep
+  // Draw some numbers
+  drawingWrite(ONE_DRAWING);
+  delay(1000);
+  drawingWrite(TWO_DRAWING);
+  delay(1000);
+  drawingWrite(EIGHT_DECIMAL_DRAWING);
   delay(1000);
 
-  digitalWrite(LATCH_PIN, LOW);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, B_VALUE);
-  digitalWrite(LATCH_PIN, HIGH);
-  delay(1000);
-  digitalWrite(LATCH_PIN, LOW);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, C_VALUE);
-  digitalWrite(LATCH_PIN, HIGH);
-  delay(1000);
-  digitalWrite(LATCH_PIN, LOW);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, D_VALUE);
-  digitalWrite(LATCH_PIN, HIGH);
-  delay(1000);
-  digitalWrite(LATCH_PIN, LOW);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, E_VALUE);
-  digitalWrite(LATCH_PIN, HIGH);
-  delay(1000);
-  digitalWrite(LATCH_PIN, LOW);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, F_VALUE);
-  digitalWrite(LATCH_PIN, HIGH);
-  delay(1000);
-  digitalWrite(LATCH_PIN, LOW);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, G_VALUE);
-  digitalWrite(LATCH_PIN, HIGH);
-  delay(1000);
-  digitalWrite(LATCH_PIN, LOW);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, DECIMAL_VALUE);
-  digitalWrite(LATCH_PIN, HIGH);
-  delay(1000);
-  digitalWrite(LATCH_PIN, LOW);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, 0);
-  digitalWrite(LATCH_PIN, HIGH);
-  delay(1000);
+  // Draw a looping sequence
+  int loop_count = 3;
+  int len = sizeof(LOOP_SEQUENCE_DRAWINGS)/sizeof(*LOOP_SEQUENCE_DRAWINGS);
+  for (int i = 0; i < loop_count; i += 1) {
+    for (int j = 0; j < len; j += 1) {
+      drawingWrite(LOOP_SEQUENCE_DRAWINGS[j]);
+      delay(100);
+    }
+  }
 }
