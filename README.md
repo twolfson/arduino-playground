@@ -25,13 +25,13 @@ As mentioned, all folders are using [PlatformIO][] to make iterating a breeze. T
 
 ```bash
 # Navigate to our folder
-cd lesson-01
+cd 01-blinking-led
 
 # If you are using a virtualenv, switch to it now
 #   workon platformio
 
 # Upload to our Arduino
-platformio run --upload target
+platformio run --target upload
 ```
 
 ### Interacting with serial monitor
