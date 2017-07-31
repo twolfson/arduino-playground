@@ -1,7 +1,7 @@
 // Derived from https://github.com/sunfounder/Sunfounder_SuperKit_for_Arduino/blob/d38b2f2d8d64a420f4123d0a9e2b713b705e19f4/01.Blinking%20Led.ino
 #include "Arduino.h"
 
-int LED = 9;
+int LED = 13;
 
 void setup()
 {
