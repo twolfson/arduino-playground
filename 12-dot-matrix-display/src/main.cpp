@@ -54,7 +54,7 @@ void loop()
         // Output our row values
         shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ~data[baseIndex + offset]);
 
-        // Tell our shift register where to write the byte
+        // Tell our shift register where to open ground (so we set the row)
         shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ~rowIndex);
 
         // Notify shift register with info
