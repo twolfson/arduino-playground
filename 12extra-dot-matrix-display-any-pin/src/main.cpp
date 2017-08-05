@@ -16,6 +16,8 @@ const int CLOCK_PIN = 12;
 const int DATA_PIN = 11;
 const int LATCH_PIN = 8;
 
+const int ROW_COUNT = 8;
+const int COL_COUNT = 8;
 register_mask_t ROW_1  = {register_1: 0b01000000, register_2: 0b00000000};
 register_mask_t ROW_2  = {register_1: 0b00010000, register_2: 0b00000000}; // DEAD
 register_mask_t ROW_3  = {register_1: 0b00000100, register_2: 0b00000000};
@@ -24,7 +26,7 @@ register_mask_t ROW_5  = {register_1: 0b00100000, register_2: 0b00000000};
 register_mask_t ROW_6  = {register_1: 0b00001000, register_2: 0b00000000}; // DEAD
 register_mask_t ROW_7  = {register_1: 0b00000000, register_2: 0b00010000};
 register_mask_t ROW_8  = {register_1: 0b00000000, register_2: 0b00000100};
-register_mask_t ROWS[8] = {ROW_1, ROW_2, ROW_3, ROW_4, ROW_5, ROW_6, ROW_7, ROW_8};
+register_mask_t ROWS[ROW_COUNT] = {ROW_1, ROW_2, ROW_3, ROW_4, ROW_5, ROW_6, ROW_7, ROW_8};
 
 // DEV: These black out an LED row, we need to invert them with the other columns to get their true value
 register_mask_t _COL_1 = {register_1: 0b00000000, register_2: 0b00000001};
@@ -45,7 +47,7 @@ register_mask_t COL_5 = {register_1: _ALL_COLS.register_1 ^ _COL_5.register_1, r
 register_mask_t COL_6 = {register_1: _ALL_COLS.register_1 ^ _COL_6.register_1, register_2: _ALL_COLS.register_2 ^ _COL_6.register_2};
 register_mask_t COL_7 = {register_1: _ALL_COLS.register_1 ^ _COL_7.register_1, register_2: _ALL_COLS.register_2 ^ _COL_7.register_2};
 register_mask_t COL_8 = {register_1: _ALL_COLS.register_1 ^ _COL_8.register_1, register_2: _ALL_COLS.register_2 ^ _COL_8.register_2};
-register_mask_t COLS[8] = {COL_1, COL_2, COL_3, COL_4, COL_5, COL_6, COL_7, COL_8};
+register_mask_t COLS[COL_COUNT] = {COL_1, COL_2, COL_3, COL_4, COL_5, COL_6, COL_7, COL_8};
 
 //Define some images
 char X_CHAR = 'x';
@@ -82,10 +84,9 @@ char BOTTOM_LEFT_DIAGONAL_IMAGE[8][8] = {
 
 // Define helper logic
 
-void imageWrite(char image[8][8]) {
-  // TODO: Parameterize row/col counts
-  for (int i = 0; i < 8; i += 1) {
-    for (int j = 0; j < 8; j += 1) {
+void imageWrite(char image[ROW_COUNT][COL_COUNT]) {
+  for (int i = 0; i < ROW_COUNT; i += 1) {
+    for (int j = 0; j < COL_COUNT; j += 1) {
       if (image[i][j] == X_CHAR) {
         shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROWS[i].register_1 | COLS[j].register_1);
         shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROWS[i].register_2 | COLS[j].register_2);
