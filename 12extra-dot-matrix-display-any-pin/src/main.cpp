@@ -35,18 +35,15 @@ register_mask_t _COL_6 = {register_1: 0b00000000, register_2: 0b00100000};
 register_mask_t _COL_7 = {register_1: 0b00000000, register_2: 0b01000000};
 register_mask_t _COL_8 = {register_1: 0b00000000, register_2: 0b10000000};
 
-register_mask_t ALL_COLS = {
-  register_1: _COL_1.register_1 & _COL_2.register_1 & _COL_3.register_1 & _COL_4.register_1 & _COL_5.register_1 & _COL_6.register_1 & _COL_7.register_1 & _COL_8.register_1,
-  register_2: _COL_1.register_2 & _COL_2.register_2 & _COL_3.register_2 & _COL_4.register_2 & _COL_5.register_2 & _COL_6.register_2 & _COL_7.register_2 & _COL_8.register_2
-};
-register_mask_t COL_1 = {register_1: ALL_COLS.register_1 ^ _COL_1.register_1, register_2: ALL_COLS.register_1 ^ _COL_1.register_2};
-register_mask_t COL_2 = {register_1: ALL_COLS.register_1 ^ _COL_2.register_1, register_2: ALL_COLS.register_1 ^ _COL_2.register_2};
-register_mask_t COL_3 = {register_1: ALL_COLS.register_1 ^ _COL_3.register_1, register_2: ALL_COLS.register_1 ^ _COL_3.register_2};
-register_mask_t COL_4 = {register_1: ALL_COLS.register_1 ^ _COL_4.register_1, register_2: ALL_COLS.register_1 ^ _COL_4.register_2};
-register_mask_t COL_5 = {register_1: ALL_COLS.register_1 ^ _COL_5.register_1, register_2: ALL_COLS.register_1 ^ _COL_5.register_2};
-register_mask_t COL_6 = {register_1: ALL_COLS.register_1 ^ _COL_6.register_1, register_2: ALL_COLS.register_1 ^ _COL_6.register_2};
-register_mask_t COL_7 = {register_1: ALL_COLS.register_1 ^ _COL_7.register_1, register_2: ALL_COLS.register_1 ^ _COL_7.register_2};
-register_mask_t COL_8 = {register_1: ALL_COLS.register_1 ^ _COL_8.register_1, register_2: ALL_COLS.register_1 ^ _COL_8.register_2};
+register_mask_t ALL_COLS = {register_1: 0b00000011, register_2: 0b011101011};
+register_mask_t COL_1 = {register_1: ALL_COLS.register_1, register_2: ALL_COLS.register_2};
+register_mask_t COL_2 = {register_1: ALL_COLS.register_1, register_2: ALL_COLS.register_2};
+register_mask_t COL_3 = {register_1: ALL_COLS.register_1, register_2: ALL_COLS.register_2};
+register_mask_t COL_4 = {register_1: ALL_COLS.register_1, register_2: ALL_COLS.register_2};
+register_mask_t COL_5 = {register_1: ALL_COLS.register_1, register_2: ALL_COLS.register_2};
+register_mask_t COL_6 = {register_1: ALL_COLS.register_1, register_2: ALL_COLS.register_2};
+register_mask_t COL_7 = {register_1: ALL_COLS.register_1, register_2: ALL_COLS.register_2};
+register_mask_t COL_8 = {register_1: ALL_COLS.register_1, register_2: ALL_COLS.register_2};
 
 
 // 1: 0b00010000 - DEAD
