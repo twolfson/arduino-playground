@@ -1,7 +1,7 @@
 // Load in our dependencies
 #include "Arduino.h"
 
-// DEV: The initial setup of requires precise wiring
+// DEV: The original exercise of requires precise wiring (e.g. 2nd register is only for ground)
 //   which is a pain to manually debug
 //   We've decided to circumvent that via smarter register data
 
