@@ -44,13 +44,22 @@ void loop()
   for (int baseIndex = 0; baseIndex < (ROWS * IMAGES); baseIndex += 1) {
     // Repeat our display 10 times to avoid flashing
     for(int t = 0; t < 10; t += 1) {
-      int dataMask = 0x01;
+      int rowIndex = 0x01;
+      // For each of our rows
       for (int offset = 0; offset < ROWS; offset += 1) {
-        dataMask = dataMask << 1;
+        // Update the row index
+        rowIndex = rowIndex << 1;
         delay(1);
+
+        // Output our row values
         shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ~data[baseIndex + offset]);
-        shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ~dataMask);
+
+        // Tell our shift register where to write the byte
+        shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ~rowIndex);
+
+        // Notify shift register with info
         digitalWrite(LATCH_PIN, HIGH);
+        delay(1);
         digitalWrite(LATCH_PIN, LOW);
       }
     }
