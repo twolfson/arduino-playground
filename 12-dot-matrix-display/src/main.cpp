@@ -9,8 +9,7 @@ const int LATCH_PIN = 8;
 const int CLOCK_SPEED = 100;
 const int ROWS = 8;
 const int IMAGES = 1;
-const int data[ROWS] = {
-  // TODO: If no lights turn on, try 0xCC
+const int data[IMAGES * ROWS] = {
   // TODO: Comment what each of these items is
   0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF
 };
@@ -26,14 +25,14 @@ void setup()
 
 void loop()
 {
-  for (int imageIndex = 0; imageIndex < ROWS; imageIndex += 1) {
+  for (int imageIndex = 0; imageIndex < IMAGES; imageIndex += 1) {
     // TODO: Add timing repetition (we can't persist as per normal high/low)
     int dataMask = 0x01;
     for (int i = 0; i < ROWS; i += 1) {
-      int num = (imageIndex * ROWS) + i;
+      int dataIndex = (imageIndex * ROWS) + i;
       dataMask = dataMask << 1;
       delay(1);
-      shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ~data[num]);
+      shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ~data[dataIndex]);
       shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ~dataMask);
       digitalWrite(LATCH_PIN, HIGH);
       digitalWrite(LATCH_PIN, LOW);
