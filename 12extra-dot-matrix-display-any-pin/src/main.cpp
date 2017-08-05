@@ -17,7 +17,22 @@ const int DATA_PIN = 11;
 const int LATCH_PIN = 8;
 
 register_mask_t ROW_1 = {register_1: 0b10000000, register_2: 0b00000000};
+register_mask_t ROW_2 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t ROW_3 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t ROW_4 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t ROW_5 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t ROW_6 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t ROW_7 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t ROW_8 = {register_1: 0b00000000, register_2: 0b00000000};
+
+register_mask_t COL_1 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t COL_2 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t COL_3 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t COL_4 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t COL_5 = {register_1: 0b00000000, register_2: 0b00000000};
 register_mask_t COL_6 = {register_1: 0b00000000, register_2: 0b00100000};
+register_mask_t COL_7 = {register_1: 0b00000000, register_2: 0b00000000};
+register_mask_t COL_8 = {register_1: 0b00000000, register_2: 0b00000000};
 
 const int ROWS = 8;
 const int IMAGES = 18;
@@ -54,8 +69,8 @@ void setup()
 void loop()
 {
   delay(1);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_1.register_1 | COL_6.register_1);
-  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_1.register_2 | COL_6.register_2);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_2.register_1 | COL_6.register_1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_2.register_2 | COL_6.register_2);
   digitalWrite(LATCH_PIN, HIGH);
   digitalWrite(LATCH_PIN, LOW);
 }
