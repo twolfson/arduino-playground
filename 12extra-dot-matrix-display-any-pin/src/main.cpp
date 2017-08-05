@@ -86,7 +86,6 @@ void imageWrite(char image[8][8]) {
   // TODO: Parameterize row/col counts
   for (int i = 0; i < 8; i += 1) {
     for (int j = 0; j < 8; j += 1) {
-      delay(1);
       if (image[i][j] == X_CHAR) {
         shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROWS[i].register_1 | COLS[j].register_1);
         shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROWS[i].register_2 | COLS[j].register_2);
