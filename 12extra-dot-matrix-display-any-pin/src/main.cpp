@@ -45,10 +45,6 @@ register_mask_t COL_6 = {register_1: ALL_COLS.register_1 ^ _COL_6.register_1, re
 register_mask_t COL_7 = {register_1: ALL_COLS.register_1 ^ _COL_7.register_1, register_2: ALL_COLS.register_2 ^ _COL_7.register_2};
 register_mask_t COL_8 = {register_1: ALL_COLS.register_1 ^ _COL_8.register_1, register_2: ALL_COLS.register_2 ^ _COL_8.register_2};
 
-
-// 1: 0b00010000 - DEAD
-// 1: 0b00001000 - DEAD
-
 const int ROWS = 8;
 const int IMAGES = 18;
 int data[ROWS * IMAGES] = {
@@ -86,6 +82,48 @@ void loop()
   delay(1);
   shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_1.register_1 | COL_1.register_1);
   shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_1.register_2 | COL_1.register_2);
+  digitalWrite(LATCH_PIN, HIGH);
+  digitalWrite(LATCH_PIN, LOW);
+
+  delay(1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_2.register_1 | COL_2.register_1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_2.register_2 | COL_2.register_2);
+  digitalWrite(LATCH_PIN, HIGH);
+  digitalWrite(LATCH_PIN, LOW);
+
+  delay(1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_3.register_1 | COL_3.register_1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_3.register_2 | COL_3.register_2);
+  digitalWrite(LATCH_PIN, HIGH);
+  digitalWrite(LATCH_PIN, LOW);
+
+  delay(1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_4.register_1 | COL_4.register_1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_4.register_2 | COL_4.register_2);
+  digitalWrite(LATCH_PIN, HIGH);
+  digitalWrite(LATCH_PIN, LOW);
+
+  delay(1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_5.register_1 | COL_5.register_1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_5.register_2 | COL_5.register_2);
+  digitalWrite(LATCH_PIN, HIGH);
+  digitalWrite(LATCH_PIN, LOW);
+
+  delay(1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_6.register_1 | COL_6.register_1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_6.register_2 | COL_6.register_2);
+  digitalWrite(LATCH_PIN, HIGH);
+  digitalWrite(LATCH_PIN, LOW);
+
+  delay(1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_7.register_1 | COL_7.register_1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_7.register_2 | COL_7.register_2);
+  digitalWrite(LATCH_PIN, HIGH);
+  digitalWrite(LATCH_PIN, LOW);
+
+  delay(1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_8.register_1 | COL_8.register_1);
+  shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, ROW_8.register_2 | COL_8.register_2);
   digitalWrite(LATCH_PIN, HIGH);
   digitalWrite(LATCH_PIN, LOW);
 }
