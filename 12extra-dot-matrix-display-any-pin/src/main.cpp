@@ -69,7 +69,7 @@ char TOP_LEFT_DIAGONAL_IMAGE[8][8] = {
   "      x ",
   "       x",
 };
-char BOTTOM_RIGHT_DIAGONAL_IMAGE[8][8] = {
+char BOTTOM_LEFT_DIAGONAL_IMAGE[8][8] = {
   "       x",
   "      x ",
   "     x  ",
@@ -110,5 +110,16 @@ void setup()
 
 void loop()
 {
-  imageWrite(BORDER_IMAGE);
+  for (int i = 0; i < 100; i += 1) {
+    delay(1);
+    imageWrite(BORDER_IMAGE);
+  }
+  for (int i = 0; i < 100; i += 1) {
+    delay(1);
+    imageWrite(TOP_LEFT_DIAGONAL_IMAGE);
+  }
+  for (int i = 0; i < 100; i += 1) {
+    delay(1);
+    imageWrite(BOTTOM_LEFT_DIAGONAL_IMAGE);
+  }
 }
