@@ -54,3 +54,18 @@ Unfortunately, when the monitor is active, we can't upload new firmware so be su
     - Solutions from Shenzhen I/O which helped push me further along in my electronics understanding
 - [SparkFun tutorials](https://learn.sparkfun.com/tutorials/tags/concepts?page=all)
     - Great tutorials to put knowledge behind the lessons
+
+## Donating
+Support this project and [others by twolfson][twolfson-projects] via [donations][twolfson-support-me].
+
+<http://twolfson.com/support-me>
+
+[twolfson-projects]: http://twolfson.com/projects
+[twolfson-support-me]: http://twolfson.com/support-me
+
+## Unlicense
+As of Nov 07 2016, Todd Wolfson has released this repository and its contents to the public domain.
+
+It has been released under the [UNLICENSE][].
+
+[UNLICENSE]: UNLICENSE
